@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="图 2">
+    <mxGraphModel grid="0" page="1" pageWidth="1560" pageHeight="975" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" parent="1" vertex="1" value="A 阶段结束，Pi 已读取 handoff.txt 并回复启动命令" style="rounded=1;absoluteArcSize=1;arcSize=60;whiteSpace=wrap;html=0;fillColor=#E7EFF8;strokeColor=#668199;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=22;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="437" y="26" width="686" height="58" />
+        </mxCell>
+        <mxCell id="choice" parent="1" vertex="1" value="用户选择哪种会话操作？" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#668199;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=20;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="583" y="104" width="394" height="104" />
+        </mxCell>
+        <mxCell id="e0" parent="1" edge="1" source="start" target="choice" style="edgeStyle=none;rounded=0;html=0;strokeColor=#668199;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="left0" parent="1" vertex="1" value="退出 Pi，在同一目录重新启动&#10;node .\packages\coding-agent\dist\cli.js -c" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="229" width="716" height="74" />
+        </mxCell>
+        <mxCell id="e1" parent="1" edge="1" source="choice" target="left0" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.5;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="400.0" y="156.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tag2" parent="1" value="-c" vertex="1" style="text;html=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Microsoft YaHei;fontStyle=1;fontSize=20;fontColor=#1D5994;">
+          <mxGeometry as="geometry" x="431.5" y="127.0" width="120" height="28" />
+        </mxCell>
+        <mxCell id="left1" parent="1" vertex="1" value="打开 A 阶段保存的会话 JSONL&#10;main.ts:480 → SessionManager.continueRecent(cwd, sessionDir)&#10;session-manager.ts:1040、1811 → loadEntriesFromFile()" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="325" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e2" parent="1" edge="1" source="left0" target="left1" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="left2" parent="1" vertex="1" value="恢复该会话的历史消息&#10;sessionManager.buildSessionContext()&#10;sdk.ts:210、409 → Agent 初始 messages = existingSession.messages" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="441" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e3" parent="1" edge="1" source="left1" target="left2" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="left3" parent="1" vertex="1" value="输入同一条提问&#10;请起草 README 的启动说明" style="shape=parallelogram;perimeter=parallelogramPerimeter;fixedSize=1;size=29;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="557" width="716" height="74" />
+        </mxCell>
+        <mxCell id="e4" parent="1" edge="1" source="left2" target="left3" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="left4" parent="1" vertex="1" value="请求模型&#10;A 阶段历史（原提问、read 调用与结果、Pi 回复）＋本次提问&#10;runAgentLoop() 合并 → convertToLlm() → streamFunction()" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#E7EFF8;strokeColor=#1D5994;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="653" width="716" height="104" />
+        </mxCell>
+        <mxCell id="e5" parent="1" edge="1" source="left3" target="left4" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="left5" parent="1" vertex="1" value="回复包含 npm run demo -- --profile group-678418&#10;本轮未观察到工具调用" style="shape=parallelogram;perimeter=parallelogramPerimeter;fixedSize=1;size=29;whiteSpace=wrap;html=0;fillColor=#E7EFF8;strokeColor=#1D5994;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="42" y="779" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e6" parent="1" edge="1" source="left4" target="left5" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="leftend" parent="1" vertex="1" value="结束" style="rounded=1;absoluteArcSize=1;arcSize=60;whiteSpace=wrap;html=0;fillColor=#E7EFF8;strokeColor=#1D5994;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="312" y="895" width="176" height="54" />
+        </mxCell>
+        <mxCell id="e7" parent="1" edge="1" source="left5" target="leftend" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1D5994;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="right0" parent="1" vertex="1" value="在 Pi 内输入 /new&#10;interactive-mode.ts:3429 → handleClearCommand()" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="229" width="716" height="74" />
+        </mxCell>
+        <mxCell id="e8" parent="1" edge="1" source="choice" target="right0" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1160.0" y="156.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tag9" parent="1" value="/new" vertex="1" style="text;html=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Microsoft YaHei;fontStyle=1;fontSize=20;fontColor=#096660;">
+          <mxGeometry as="geometry" x="1008.5" y="127.0" width="120" height="28" />
+        </mxCell>
+        <mxCell id="right1" parent="1" vertex="1" value="创建新的会话&#10;runtimeHost.newSession() → SessionManager.create(cwd, sessionDir)&#10;agent-session-runtime.ts:226、238–253" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="325" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e9" parent="1" edge="1" source="right0" target="right1" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="right2" parent="1" vertex="1" value="用新 SessionManager 重建运行时&#10;新会话的聊天历史为空&#10;sdk.ts:210、409 → Agent 初始 messages = []" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="441" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e10" parent="1" edge="1" source="right1" target="right2" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="right3" parent="1" vertex="1" value="输入同一条提问&#10;请起草 README 的启动说明" style="shape=parallelogram;perimeter=parallelogramPerimeter;fixedSize=1;size=29;whiteSpace=wrap;html=0;fillColor=#F4F8FC;strokeColor=#A5B8CA;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="557" width="716" height="74" />
+        </mxCell>
+        <mxCell id="e11" parent="1" edge="1" source="right2" target="right3" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="right4" parent="1" vertex="1" value="请求模型&#10;聊天消息仅含本次提问&#10;runAgentLoop() 合并 → convertToLlm() → streamFunction()" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#EAF5F3;strokeColor=#096660;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=0;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="653" width="716" height="104" />
+        </mxCell>
+        <mxCell id="e12" parent="1" edge="1" source="right3" target="right4" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="right5" parent="1" vertex="1" value="Pi 表示缺少交接单中的启动命令&#10;本轮未观察到工具调用" style="shape=parallelogram;perimeter=parallelogramPerimeter;fixedSize=1;size=29;whiteSpace=wrap;html=0;fillColor=#EAF5F3;strokeColor=#096660;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="802" y="779" width="716" height="94" />
+        </mxCell>
+        <mxCell id="e13" parent="1" edge="1" source="right4" target="right5" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rightend" parent="1" vertex="1" value="结束" style="rounded=1;absoluteArcSize=1;arcSize=60;whiteSpace=wrap;html=0;fillColor=#EAF5F3;strokeColor=#096660;strokeWidth=1.5;fontFamily=Microsoft YaHei;fontSize=19;fontColor=#16283D;fontStyle=1;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="1072" y="895" width="176" height="54" />
+        </mxCell>
+        <mxCell id="e14" parent="1" edge="1" source="right5" target="rightend" style="edgeStyle=none;rounded=0;html=0;strokeColor=#096660;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
